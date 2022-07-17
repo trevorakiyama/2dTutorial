@@ -16,6 +16,10 @@ func show_message(text):
 	$Message.text = text
 	$Message.show()
 	$MessageTimer.start()
+	
+func show_message_permanent(text):
+	$Message.text = text
+	$Message.show()
 
 func show_game_over():
 	show_message("Game Over")

@@ -11,12 +11,12 @@ animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "walk",
-"speed": 5.0
+"speed": 30.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -33,6 +33,7 @@ __meta__ = {
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "up"
+frame = 1
 
 [node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

@@ -33,15 +33,19 @@ func _process(delta):
 		$PlayerAnimatedSprite.play()
 	else:
 		$PlayerAnimatedSprite.stop()
+		$PlayerAnimatedSprite.frame = 0
 		
 	if (velocity.x != 0):
 		$PlayerAnimatedSprite.animation = "walk"
 		$PlayerAnimatedSprite.flip_v = false
 		$PlayerAnimatedSprite.flip_h = velocity.x < 0
+		get_node("/root/Main/WalkingSound").play()
+		
 	elif (velocity.y != 0):
 		$PlayerAnimatedSprite.animation = "up"
 		$PlayerAnimatedSprite.flip_v = velocity.y > 0
-		
+	else:
+		get_node("/root/Main/WalkingSound").stop()
 		
 		
 	position += velocity * delta
@@ -53,7 +57,13 @@ func _on_Player_body_entered(body):
 	.hide()
 	emit_signal("hit")
 	$PlayerCollisionShape2D.set_deferred("disabled", true)
-	
+
+func player_hide(pos):
+	position = pos
+	hide()
+	$PlayerCollisionShape2D.disabled = true
+
+
 func start(pos):
 	position = pos
 	show()
